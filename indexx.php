@@ -88,7 +88,7 @@
 
                         <?php
                         include("db.php");
-                        $sql = "SELECT * FROM albums_main";
+                        $sql = "SELECT * FROM album_main1";
                         $res = mysqli_query($conn, $sql);
                         if (mysqli_num_rows($res) > 0) {
                             while ($row = mysqli_fetch_assoc($res)) {
@@ -105,12 +105,12 @@
 
                         if (isset($_GET['hoverIndex'])) {
                             $hoverIndex = $_GET['hoverIndex'];
-                        
+
                             echo $hoverIndex;
                         } else {
                             echo 'Hover index not provided';
                         }
-                    
+
                         ?>
                     </div>
                 </div>
@@ -152,9 +152,31 @@
             <div class="albums">
                 <p>heelo</p>
                 <div id="index1">x</div>
-                
+
                 <?php
-                echo "Received number: " . $hoverIndex;
+                include("db.php");
+                $tableName = "album" . $hoverIndex;
+                $sql = "SELECT * FROM $tableName";
+                $res = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($res) > 0) {
+                    while ($row = mysqli_fetch_assoc($res)) {
+                        echo "<div class='album' id='$tableName'>";
+                        echo "<p>$row[Movie]";
+                        echo "<p>$row[Song]";
+                        echo "<p>$row[Singer]";
+                        echo "<p>$row[Hero]";
+                        echo "<p>$row[Music_director]";
+                        // echo "<img src='$row[Album_Cover]' alt='' />";
+                        // echo "<p>$row[Album_Name] </p>";
+                        // echo "<p class='index'>$row[i] </p>";
+                        // echo "<div class='icon'>";
+                        // echo "<i class='fa-solid fa-play'></i> </div>
+                        
+                echo "</div";
+                    }
+                }
+
+
                 ?>
             </div>
 
