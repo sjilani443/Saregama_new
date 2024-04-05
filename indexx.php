@@ -86,9 +86,9 @@
                             <input type="hidden" name="hoverIndex" id="hoverIndexInput">
                         </form>
 
-                        <?php
+                         <?php
                         include("db.php");
-                        $sql = "SELECT * FROM album_main1";
+                        $sql = "SELECT * FROM albums_main";
                         $res = mysqli_query($conn, $sql);
                         if (mysqli_num_rows($res) > 0) {
                             while ($row = mysqli_fetch_assoc($res)) {
@@ -152,29 +152,41 @@
             <div class="albums">
                 <p>heelo</p>
                 <div id="index1">x</div>
+                <div class="album" id="1">
+                    <div class="asong">
+                        <p>1</p>
+                        <p>Nandanannanan</p>
+                        <p>Sid Sriram</p>
+                        <p>Vijay Devarakonda</p>
+                        <p>Gopi Sunder</p>
+                        <a href="">Link</a>
+                        <p>03:00</p>
+                        <div class="imgg">
+                        <img src="https://m.media-amazon.com/images/M/MV5BYjU0N2FmNTItZmEyMC00NTNhLWFmYjAtMjc4YTc2M2E3YjIxXkEyXkFqcGdeQXVyMTMzNzMzOTY5._V1_.jpg" alt="">
+                        </div>
+                        
+                    </div>
+                </div>
+                    </div>
 
                 <?php
-                include("db.php");
-                $tableName = "album" . $hoverIndex;
-                $sql = "SELECT * FROM $tableName";
-                $res = mysqli_query($conn, $sql);
-                if (mysqli_num_rows($res) > 0) {
-                    while ($row = mysqli_fetch_assoc($res)) {
-                        echo "<div class='album' id='$tableName'>";
-                        echo "<p>$row[Movie]";
-                        echo "<p>$row[Song]";
-                        echo "<p>$row[Singer]";
-                        echo "<p>$row[Hero]";
-                        echo "<p>$row[Music_director]";
-                        // echo "<img src='$row[Album_Cover]' alt='' />";
-                        // echo "<p>$row[Album_Name] </p>";
-                        // echo "<p class='index'>$row[i] </p>";
-                        // echo "<div class='icon'>";
-                        // echo "<i class='fa-solid fa-play'></i> </div>
+                // include("db.php");
+                // $tableName = "album" . $hoverIndex;
+                // $sql = "SELECT * FROM $tableName";
+                // $res = mysqli_query($conn, $sql);
+                // if (mysqli_num_rows($res) > 0) {
+                //     while ($row = mysqli_fetch_assoc($res)) {
+                //         echo "<div class='album' id='$tableName'>";
+                //         echo "<p>$row[Movie]";
+                //         echo "<p>$row[Song]";
+                //         echo "<p>$row[Singer]";
+                //         echo "<p>$row[Hero]";
+                //         echo "<p>$row[Music_director]";
                         
-                echo "</div";
-                    }
-                }
+                        
+                // echo "</div";
+                //     }
+                // }
 
 
                 ?>
