@@ -296,7 +296,13 @@ button:hover {
 }
 .playbar .songinfo {
   font-size: 20px;
-  width: 20%;
+  width: 25%;
+  font-family: Baskerville Old Face;
+}
+.playbar .singers
+{
+  font-size: 20px;
+  width: 25%;
   font-family: Baskerville Old Face;
 }
 .playbar .songimg img {
@@ -410,6 +416,10 @@ button:hover {
 .asong #hero
 {
   width: 15%;;
+}
+.asong #link
+{
+  display: none;
 }
 .asong img
 {
