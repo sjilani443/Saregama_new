@@ -88,7 +88,7 @@
 
                         <?php
                         include("db.php");
-                        $sql = "SELECT * FROM albums_main";
+                        $sql = "SELECT * FROM albums_main1";
                         $res = mysqli_query($conn, $sql);
                         if (mysqli_num_rows($res) > 0) {
                             while ($row = mysqli_fetch_assoc($res)) {
@@ -118,16 +118,24 @@
 
 
                 <!-- jjj -->
+
+            </div>
+
+
+            <div class="albums">
+
                 <div class="playbar">
                     <div class="playbar-options">
                         <div class="songinfo">
                         </div>
+                        <div class="singers">
+                        </div>
                         <div class="play-buttons">
                             <div class="buttons">
                                 <i class="fa-solid fa-backward-fast"></i>
-                                <i class="fa-solid fa-circle-chevron-left"></i>
+                                <!-- <i class="fa-solid fa-circle-chevron-left"></i> -->
                                 <div id="play"><i class="fa-solid fa-play"></i></div>
-                                <i class="fa-solid fa-circle-chevron-right"></i>
+                                <!-- <i class="fa-solid fa-circle-chevron-right"></i> -->
                                 <i class="fa-solid fa-forward-fast"></i>
                             </div>
                             <div class="volume">
@@ -146,31 +154,28 @@
                         <div class="circle"></div>
                     </div>
                 </div>
-            </div>
-
-
-            <div class="albums">
                 <div class="album poppins-light">
-
                     <?php
-                    $hoverIndex = 2;
                     include("db.php");
-                    $tableName = "albums" . $hoverIndex;
+                    $tableName = "albums" . 1;
                     $sql = "SELECT * FROM $tableName";
                     $res = mysqli_query($conn, $sql);
                     if (mysqli_num_rows($res) > 0) {
                         while ($row = mysqli_fetch_assoc($res)) {
-                            echo "<div class='asong'>";
+                            echo "<div class='asong'>
+                             <div id='link'>$row[Song_link]</div>";
+                            echo "<div class='imgg'>";
+                            echo "<img src='$row[Album_Cover]' alt=''>
+                            </div>";
                             echo "<div>$row[id]</div>";
                             echo "<div id='song'>$row[Song]</div>";
                             echo "<div id='moviename'>$row[Movie_Name]</div>";
-                            echo "<div id='singers'>$row[Singers],$row[Music_Director]</div>";
+                            echo "<div id='singers'>$row[Singers],$row[Music_Director]</div>
+                            ";
                             echo "<div id='hero'>$row[Hero]</div>";
-                            echo "<a href='$row[Song_link]'></a><div>$row[duration]</div>
+                            echo "<div>$row[duration]</div>
 
-                        <div class='imgg'>";
-                            echo "<img src='$row[Album_Cover]' alt=''>
-                        </div>
+                        
                     </div>";
                         }
                     }
