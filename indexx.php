@@ -157,7 +157,7 @@
                 <div class="album poppins-light">
                     <?php
                     include("db.php");
-                    $tableName = "albums" . 1;
+                    $tableName = "albums" . $hoverIndex;
                     $sql = "SELECT * FROM $tableName";
                     $res = mysqli_query($conn, $sql);
                     if (mysqli_num_rows($res) > 0) {
