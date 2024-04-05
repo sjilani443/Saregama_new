@@ -174,19 +174,18 @@ button:hover {
   height: 250px;
   background-color: rgba(7, 7, 7, 0.733);
   display: flex;
-  /* flex-direction: column; */
+  flex-direction: column;
   justify-content: space-evenly;
   padding: 13px;
   gap: 5px;
   border-radius: 4px;
 }
 .foryou > p {
-  margin-left: 45px;
+  margin-left: 50px;
   font-weight: 1000;
 }
 
 .cardcontainer {
-  padding: 5px;
   display: flex;
   justify-content: space-evenly;
 }
@@ -198,8 +197,8 @@ button:hover {
   width: 120px;
   background-color: rgb(52, 54, 55);
   border-radius: 5px;
-  gap: 8px;
-  font-size: 14px;
+  gap: 10px;
+  font-size: 15px;
   position: relative;
   justify-content: center;
   align-items: center;
@@ -226,6 +225,10 @@ button:hover {
   font-size: 30px;
   color: #0e0e0e00;
   transition: all ease-in-out 0.5s;
+}
+.card .index
+{
+  display: none;
 }
 .icon i {
   position: absolute;

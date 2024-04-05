@@ -88,7 +88,7 @@
 
                         <?php
                         include("db.php");
-                        $sql = "SELECT * FROM albums_main1";
+                        $sql = "SELECT * FROM album_main1";
                         $res = mysqli_query($conn, $sql);
                         if (mysqli_num_rows($res) > 0) {
                             while ($row = mysqli_fetch_assoc($res)) {
@@ -105,12 +105,7 @@
 
                         if (isset($_GET['hoverIndex'])) {
                             $hoverIndex = $_GET['hoverIndex'];
-
-                            echo $hoverIndex;
-                        } else {
-                            echo 'Hover index not provided';
-                        }
-
+                        } 
                         ?>
                     </div>
                 </div>
