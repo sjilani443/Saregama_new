@@ -256,16 +256,17 @@ button:hover {
 .playbar {
   width: 82%;
   height: 15vh;
-  border-radius: 30px;
+  border-radius: 10px;
   background-color: #585b5c;
   display: flex;
   flex-direction: column;
   gap: 0px;
   justify-content: center;
-  /* align-items: ; */
+  align-items: center;
   position: fixed;
   bottom: 10px;
-  background-color: rgba(31, 30, 30, 0.929);
+  background-color:#0a2638;
+  /* background-color: rgba(31, 30, 30, 0.929); */
   transition: all 0.2s ease-in-out;
 }
 .playbar-options {
@@ -278,7 +279,7 @@ button:hover {
 }
 .seekbar {
   height: 5px;
-  width: 98%;
+  width: 90%;
   /* border: 2px solid rgb(0, 0, 0); */
   background-color: #040f16;
   position: relative;
