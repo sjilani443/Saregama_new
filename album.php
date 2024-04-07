@@ -40,9 +40,5 @@ if ($hoverIndex !== null) {
     }
     echo "</div>";
 } 
-else {
-    echo "Hover index not provided";
-}
-
 
 ?>
