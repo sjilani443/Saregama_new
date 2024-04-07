@@ -1,13 +1,25 @@
 <?php
 include("db.php");
+
+$tableName='';
+$sql='';
+$res='';
+$row='';
+
 $hoverIndex = isset($_GET['hoverIndex']) ? $_GET['hoverIndex'] : null;
+
 // Fetch albums data based on hoverIndex
 if ($hoverIndex !== null) {
+    // Construct the table name based on the hover index
     $tableName = "albums" . $hoverIndex;
+    
+    // Construct the SQL query to select all data from the appropriate table
     $sql = "SELECT * FROM $tableName";
+    
+    // Execute the query
     $res = mysqli_query($conn, $sql);
-    echo "<div class='album poppins-light'>";
-    // Output the albums data
+    
+    // Output the result
     if (mysqli_num_rows($res) > 0) {
         while ($row = mysqli_fetch_assoc($res)) {
            
@@ -23,7 +35,14 @@ if ($hoverIndex !== null) {
             echo "</div>";
         }
     }
+    else {
+        echo "No albums found for hover index $hoverIndex";
+    }
     echo "</div>";
+} 
+else {
+    echo "Hover index not provided";
 }
+
 
 ?>

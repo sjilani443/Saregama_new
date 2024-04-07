@@ -16,7 +16,13 @@ $(document).ready(function () {
     hoveredIndex = $(this).find(".index").text();
     console.log("Hovered index:", hoveredIndex);
 
-    // Set a new timeout to submit the form after 500 milliseconds
+  });
+
+  
+  var mainBody = $(".main-body");
+  var albumsDiv = $(".albums");
+  $(".card").click(function (event) {
+
     $.ajax({
       url: "album.php", // Specify the URL of the PHP script
       method: "GET", // Specify the HTTP method (GET or POST)
@@ -33,13 +39,6 @@ $(document).ready(function () {
         main();
       }
     });
-  });
-
-  function main()
-  {
-  var mainBody = $(".main-body");
-  var albumsDiv = $(".albums");
-  $(".card").click(function (event) {
     // Toggle the display of mainDiv and albumsDiv accordingly
     var mainBody = $(".main-body");
     var albumsDiv = $(".albums");
@@ -54,6 +53,8 @@ $(document).ready(function () {
     }
   });
 
+  function main()
+  {
   const playmusic = (track, pause = false) => {
     if (!pause) {
       currentSong.src = track;
