@@ -23,18 +23,25 @@
   font-weight: 300;
   font-style: normal;
 }
+.poppins-bold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
 
 * {
   padding: 0;
   margin: 0;
   /* background-color: wheat; */
   box-sizing: border-box;
+  scrollbar-width: none;
 }
 .body {
-  height: 100%;
+  height: 98%;
   width: 100%;
   background-color: #040f16;
   color: #edf2f4;
+  overflow: hidden;
 }
 .nav {
   width: 100%;
@@ -42,6 +49,15 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+}
+.logo
+{
+  height: 200px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 .logo img {
   height: 150px;
@@ -52,18 +68,88 @@
   color: #edf2f4;
 }
 .searchbar {
-  height: 10vh;
+  position: relative;
+  top: 300px;
+  height: 100vh;
   width: 50%;
   display: flex;
-  align-items: center;
+  flex-direction: column;
 }
 .searchbar input {
   width: 100%;
-  height: 5vh;
   border-radius: 5px;
   padding: 5px;
   border: 2px solid white;
   color: black;
+  z-index: 1;
+}
+.searchdiv
+{
+  box-sizing: border-box;
+  height: 700px;
+  width: 100%;
+  position: relative;
+  top: 10px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  display: none;
+  background-color: #040f16;
+  border: 2px solid white;
+  overflow: scroll;
+  align-items: center;
+}
+.searchbar::-webkit-scrollbar
+{
+  display: none;
+}
+.searchsong
+{
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  border: 1px solid white;
+  margin: 3px 20px;
+  align-items: center;
+}
+.searchsong:hover
+{
+  cursor: pointer;
+  background-color:#86bcde;
+  color: black;
+  border: 2px solid black;
+  font-weight: 1000;
+}
+.simgg img
+{
+  height: 40px;
+  width: 40px;
+}
+#ssingers
+{
+  width: 25%;
+  overflow: hidden;
+}
+#searchid
+{
+  display: none;
+}
+#smoviename
+{
+  width: 15%;
+}
+#ssong
+{
+  width: 20%;
+}
+#slink
+{
+  display: none;
+}
+#firstsong
+{
+  display: none;
 }
 .sub button {
   padding: 8px;
@@ -198,7 +284,7 @@ button:hover {
   background-color: rgb(52, 54, 55);
   border-radius: 5px;
   gap: 10px;
-  font-size: 15px;
+  font-size: 12px;
   position: relative;
   justify-content: center;
   align-items: center;
@@ -279,12 +365,12 @@ button:hover {
 }
 .seekbar {
   height: 5px;
-  width: 90%;
+  width: 80%;
   /* border: 2px solid rgb(0, 0, 0); */
   background-color: #040f16;
-  position: relative;
+  position: absolute;
   bottom: 5px;
-  left: 10px;
+  left:40px;
   border-radius: 50px;
   cursor: pointer;
 }
@@ -310,8 +396,7 @@ button:hover {
   font-family: Baskerville Old Face;
 }
 .playbar .songimg img {
-  height: 50px;
-  width: 50px;
+  height: 80px;
   display: flex;
 }
 .play-buttons {
@@ -398,7 +483,11 @@ button:hover {
 
 .asong:hover
 {
-  background-color: #0a2638;
+  cursor: pointer;
+  background-color:#86bcdec0;
+  color: black;
+  border: 2px solid black;
+  font-weight: 1000;
 }
 .asong div
 {

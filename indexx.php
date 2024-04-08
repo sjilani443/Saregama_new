@@ -29,7 +29,12 @@
                 <img src="saregama-high-resolution-logo-white-transparent.svg" alt="" />
             </div>
             <div class="searchbar">
-                <input type="text" placeholder="search music, artists,albums...." />
+                <input type="text" id="searchInput" placeholder="search music, artists, albums...." />
+                <div class="searchdiv poppins-light">
+                    <?php
+                    include("search.php");
+                    ?>
+                </div>
             </div>
             <div class="sub">
                 <button><i class="fa-solid fa-crown"></i>Get Premium</button>
@@ -74,11 +79,16 @@
                     </button>
                 </div>
             </div>
-
-            <!-- sidebar ends here -->
-
             <div class="main-body">
 
+            <div id="firstsong">
+                <div id="firstlink">Song\Telugu Trending\[iSongs.info] 01 - Nandanandanaa.mp3</div>
+                <div class="firstimgg">
+                    <img src="https://c.saavncdn.com/800/Nandanandanaa-From-The-Family-Star-Telugu-2024-20240207141003-500x500.jpg" alt=""></div>
+                <div id="firstname">Nandanandana</div>
+                <div id="firstsingers">Sid Sriram,Gopi Sunder</div>
+                <div id="firstid">1</div>
+            </div>
                 <div class="foryou ">
                     <p class="poppins-light">FOR YOU</p>
                     <div class="cardcontainer">
@@ -87,14 +97,14 @@
                         </form>
                         <?php
                         include("db.php");
-                        $sql = "SELECT * FROM album_main1";
+                        $sql = "SELECT * FROM albums_main";
                         $res = mysqli_query($conn, $sql);
                         if (mysqli_num_rows($res) > 0) {
                             while ($row = mysqli_fetch_assoc($res)) {
-                                echo "<div class='card'>";
+                                echo "<div class='card poppins-light '>";
                                 echo "<img src='$row[Album_Cover]' alt='' />";
                                 echo "<p>$row[Album_Name] </p>";
-                                echo "<p class='index'>$row[i] </p>";
+                                echo "<p class='index'>$row[id] </p>";
                                 echo "<div class='icon'>";
                                 echo "<i class='fa-solid fa-play'></i> </div>          
                         </div>";
@@ -104,54 +114,17 @@
 
                     </div>
                 </div>
-
-                
-                
-
+                <?php include("playbar.html"); ?>  
             </div>
 
-
             <div class="albums">
-
-                <div class="playbar">
-                    <div class="playbar-options">
-                        <div class="songinfo">
-                        </div>
-                        <div class="singers">
-                        </div>
-                        <div class="play-buttons">
-                            <div class="buttons">
-                                <i class="fa-solid fa-backward-fast"></i>
-                                <!-- <i class="fa-solid fa-circle-chevron-left"></i> -->
-                                <div id="play"><i class="fa-solid fa-play"></i></div>
-                                <!-- <i class="fa-solid fa-circle-chevron-right"></i> -->
-                                <i class="fa-solid fa-forward-fast"></i>
-                            </div>
-                            <div class="volume">
-                                <i class="fa-solid fa-volume-high"></i>
-                                <input type="range" name="volume">
-                            </div>
-                        </div>
-
-                        <div class="songimg">
-                        </div>
-                    </div>
-                    <div class="seekbar">
-                        <div class="circle"></div>
-                    </div>
-                </div>
                 <?php include("album.php"); ?>
-                
+                <?php include("playbar.html"); ?>
             </div>
 
         </div>
     </div>
-
-
-
-
 </body>
-
 </html>
 
 <?php
