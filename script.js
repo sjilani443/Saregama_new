@@ -18,8 +18,8 @@ const playmusic = (track, pause = false) => {
     console.log("Playingg");
     currentSong.src = track;
     currentSong.play();
-    play.html(`<i class="fa-light fa-pause"></i>`);
-    console.log("It should change");
+    $(".fa-pause").show(); // Assuming you have a FontAwesome pause icon with class fa-pause
+    $(".fa-play").hide();  // Assuming you have a FontAwesome play icon with class fa-play
     currentSong.ontimeupdate = () => {
       $(".circle").css(
         "left",
@@ -29,7 +29,8 @@ const playmusic = (track, pause = false) => {
   } else {
     console.log("Pauseed");
     currentSong.pause();
-    play.html(`<i class="fa-solid fa-play"></i>`);
+    $(".fa-pause").hide();
+    $(".fa-play").show();
   }
 };
 
@@ -150,40 +151,44 @@ const playmusic = (track, pause = false) => {
         ind = index;
       });
     });
-  }
 
-  play.click(function (element) {
-    if (currentSong.paused) {
-      currentSong.play();
-      play.html(`<i class="fa-solid fa-pause"></i>`);
-    } else {
+    $(".fa-pause").on("click", function (element) {
       currentSong.pause();
-      play.html(`<i class="fa-solid fa-play"></i>`);
-    }
-  });
+      $(this).hide();
+      $(".fa-play").show();
+    });
+    
+    $(".fa-play").on("click", function (element) {
+      currentSong.play();
+      $(this).hide();
+      $(".fa-pause").show();
+    });
+    
 
   //seekbar
   $(".seekbar").click(function (e) {
-    let per = (e.offsetX / e.target.getBoundingClientRect().width) * 100;
-    $(".circle").css("left", per + "%");
-    currentSong.currentTime = (currentSong.duration * per) / 100;
+    var seekbarWidth = $(this).width();
+    var clickX = e.pageX - $(this).offset().left;
+    var seekbarPercentage = (clickX / seekbarWidth) * 100;
+    $(".circle").css("left", seekbarPercentage + "%");
+    currentSong.currentTime = (currentSong.duration * seekbarPercentage) / 100;
   });
+  
 
-  //previous Button
   let prev = $(".buttons").children().first();
   prev.click(function (element) {
     let prevIndex = (ind - 1 + asong.length) % asong.length; // Ensure the index wraps around correctly
-    console.log(prevIndex);
-
     let prevCard = asong[prevIndex];
     let song = $(prevCard).find(":first-child").html();
     playmusic(song);
     let songinfo = $(prevCard).find("#song").html();
     let songimg = $(prevCard).find(".imgg img").attr("src");
     let singers = $(prevCard).find("#singers").html();
-    addtoplaybar(songinfo, songimg, singers, prevIndex);
-    ind = prevIndex; // Update the current index
+    addtoplaybar(songinfo, songimg, singers, prevIndex); // Change nextIndex to prevIndex
+    ind = prevIndex;
   });
+  
+  
 
   //Next Button
   let next = $(".buttons").children().last();
@@ -212,4 +217,5 @@ const playmusic = (track, pause = false) => {
   if (currentSong.currentTime == currentSong.duration) {
     $(".buttons").children().last().click();
   }
+}
 });
