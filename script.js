@@ -2,28 +2,43 @@ $(document).ready(function () {
   var hoveredIndex = null;
   var debounceTimeout;
 
-  var currentSong = new Audio();
-  var play = $("#play");
+  let currentSong = new Audio();
+  let play = $("#play");
 
   $("#home").on("click", function () {
-    window.location.href = "indexx.php";
+    var mainBody = $(".main-body");
+    var albumsDiv = $(".albumsm");
+
+    if (mainBody.css("display") === "none") {
+      mainBody.css("display", "flex");
+      albumsDiv.css("display", "none");
+      console.log("switchhh");
+    } else {
+      mainBody.css("display", "none");
+      albumsDiv.css("display", "flex");
+    }
   });
   $(".logo").on("click", function () {
     location.reload();
   });
 
-  var isPlaying = false; // Track if a song is currently playing
+  let isPlaying = false; // Track if a song is currently playing
 
   const playmusic = (track, pause = false) => {
     if (!pause) {
-      currentSong.src = track;
-      currentSong.play();
-      isPlaying = true;
+        console.log("Pausing",currentSong);
+        currentSong.pause();
+        // Set the source for the current song object and play it
+        currentSong.src = track;
+        currentSong.play();
+        console.log("Playing",currentSong);
+        isPlaying = true;
     } else {
-      currentSong.pause();
-      isPlaying = false;
+        currentSong.pause();
+        isPlaying = false;
     }
-  };
+};
+
   const addtoplaybar = (songinfo, songimg, singers, index) => {
     $(".songinfo").html(`Playing : ${songinfo}`);
     $(".songimg").html(`<img src="${songimg}" alt="">`);
@@ -48,19 +63,20 @@ $(document).ready(function () {
   });
 
   // Click event for .searchsong
-  $(document).on("click", ".searchsong", function () {
-    var songinfo = $(this).find("#ssong").html();
-    var songimg = $(this).find(".simgg img").attr("src");
-    var singers = $(this).find("#ssingers").html();
-    var index = $(this).find("#searchid").html();
-    var songlink = $(this).find("#slink").html();
-    playmusic(songlink);
-    addtoplaybar(songinfo, songimg, singers, index);
-    $(".searchdiv").css("display", "none");
-  });
+  // Unbind the click event for ".searchsong" before binding it again
+$(document).off("click", ".searchsong").on("click", ".searchsong", function () {
+  var songinfo = $(this).find("#ssong").html();
+  var songimg = $(this).find(".simgg img").attr("src");
+  var singers = $(this).find("#ssingers").html();
+  var index = $(this).find("#searchid").html();
+  var songlink = $(this).find("#slink").html();
+  playmusic(songlink);
+  addtoplaybar(songinfo, songimg, singers, index);
+  $(".searchdiv").css("display", "none");
+});
+
 
   $(document).on("mouseleave", ".searchdiv", function (event) {
-    // Check if the clicked element is not within the searchdiv
     $(".searchdiv").css("display", "none");
   });
 
@@ -141,7 +157,15 @@ $(document).ready(function () {
     $(asong).each(function (index, e) {
       $(e).click(function (element) {
         console.log($(e).find(":first-child").html());
+        if(currentSong.paused)
+        {
         playmusic($(e).find(":first-child").html());
+        }
+        else
+        {
+          currentSong.pause();
+          playmusic($(e).find(":first-child").html());
+        }
         let songinfo = $(e).find("#song").html();
         let songimg = $(e).find(".imgg img").attr("src");
         let singers = $(e).find("#singers").html();
