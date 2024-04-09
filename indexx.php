@@ -117,9 +117,11 @@
                 <?php include("playbar.html"); ?>  
             </div>
 
+            <div class="albumsm">
             <div class="albums">
                 <?php include("album.php"); ?>
-                <?php include("playbar.html"); ?>
+            </div>
+            <?php include("playbar.html"); ?>
             </div>
 
         </div>

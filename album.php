@@ -1,10 +1,6 @@
 <?php
 include("db.php");
 
-$tableName='';
-$sql='';
-$res='';
-$row='';
 
 $hoverIndex = isset($_GET['hoverIndex']) ? $_GET['hoverIndex'] : null;
 
