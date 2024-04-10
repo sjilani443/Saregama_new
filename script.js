@@ -3,7 +3,7 @@ $(document).ready(function () {
   var debounceTimeout;
 
   let currentSong = new Audio();
-  let play = $("#play");
+  let play = $(".play");
 
   $("#home").on("click", function () {
     var mainBody = $(".main-body");
@@ -31,11 +31,18 @@ $(document).ready(function () {
         // Set the source for the current song object and play it
         currentSong.src = track;
         currentSong.play();
-        console.log("Playing",currentSong);
         isPlaying = true;
+          // $(".fa-play").hide();
+          // $(".fa-pause").show();
+          console.log("Pause optino ravali");
+          play.html(`<i class="fa-solid fa-pause"></i>`);
     } else {
         currentSong.pause();
         isPlaying = false;
+        
+        // $(".fa-pause").hide();
+        // $(".fa-play").show();
+        play.html(`<i class="fa-solid fa-play"></i>`);
     }
 };
 
@@ -174,17 +181,17 @@ $(document).off("click", ".searchsong").on("click", ".searchsong", function () {
       });
     });
 
-    $(".fa-pause").on("click", function (element) {
-      currentSong.pause();
-      $(this).hide();
-      $(".fa-play").show();
-    });
-
-    $(".fa-play").on("click", function (element) {
-      currentSong.play();
-      $(this).hide();
-      $(".fa-pause").show();
-    });
+    $(".play").click(function () {
+      if (!currentSong.paused) {
+          console.log("Pause avvai");
+          currentSong.pause();
+          $(this).html(`<i class="fa-solid fa-play"></i>`);
+      } else {
+          currentSong.play();
+          $(this).html(`<i class="fa-solid fa-pause"></i>`);
+      }
+  });
+  
 
     //seekbar
     
@@ -210,7 +217,7 @@ $(document).off("click", ".searchsong").on("click", ".searchsong", function () {
       e.preventDefault();
     });
 
-    let prev = $(".buttons").children().first();
+    let prev = $(".prev");
     prev.click(function (element) {
       let prevIndex = (ind - 1 + asong.length) % asong.length; // Ensure the index wraps around correctly
       let prevCard = asong[prevIndex];
@@ -224,8 +231,9 @@ $(document).off("click", ".searchsong").on("click", ".searchsong", function () {
     });
 
     //Next Button
-    let next = $(".buttons").children().last();
+    let next = $(".next");
     next.click(function (element) {
+      console.log("Previous Button clicked");
       let nextIndex = (ind + 1 + asong.length) % asong.length; // Ensure the index wraps around correctly
       let nextCard = asong[nextIndex];
       let song = $(nextCard).find(":first-child").html();
