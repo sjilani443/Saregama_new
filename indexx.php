@@ -50,7 +50,7 @@
         <div class="main">
             <div class="sidebar">
                 <div class="options">
-                    <button id="home">Home</button>
+                    <button id="home"><i class="fa-solid fa-house"></i>Home</button>
                     <button>
                         <i class="fa-solid fa-user"></i>
                         My Profile
@@ -97,7 +97,7 @@
                         </form>
                         <?php
                         include("db.php");
-                        $sql = "SELECT * FROM albums_main";
+                        $sql = "SELECT * FROM Albums_main1";
                         $res = mysqli_query($conn, $sql);
                         if (mysqli_num_rows($res) > 0) {
                             while ($row = mysqli_fetch_assoc($res)) {
