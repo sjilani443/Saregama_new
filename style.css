@@ -68,9 +68,6 @@
   color: #edf2f4;
 }
 .searchbar {
-  position: relative;
-  top: 300px;
-  height: 100vh;
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -85,18 +82,18 @@
 }
 .searchdiv
 {
+  height: 60vh;
+  width: 55%;
+  position: absolute;
+  left: 3%;
   box-sizing: border-box;
-  height: 700px;
-  width: 100%;
-  position: relative;
-  top: 10px;
   display: flex;
   flex-direction: column;
   z-index: 1;
   display: none;
   background-color: #040f16;
   border: 2px solid white;
-  overflow: scroll;
+  overflow-y: scroll;
   align-items: center;
 }
 .searchbar::-webkit-scrollbar
@@ -106,19 +103,19 @@
 .searchsong
 {
   height: 10vh;
-  width: 100%;
+  width: 97%;
   display: flex;
   justify-content: space-evenly;
-  border: 1px solid white;
+  border: 3px solid white;
   margin: 3px 20px;
   align-items: center;
+  border-radius: 10px;
 }
 .searchsong:hover
 {
   cursor: pointer;
   background-color:#86bcde;
   color: black;
-  border: 2px solid black;
   font-weight: 1000;
 }
 .simgg img

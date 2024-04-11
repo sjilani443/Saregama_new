@@ -30,11 +30,7 @@
             </div>
             <div class="searchbar">
                 <input type="text" id="searchInput" placeholder="search music, artists, albums...." />
-                <div class="searchdiv poppins-light">
-                    <?php
-                    include("search.php");
-                    ?>
-                </div>
+                
             </div>
             <div class="sub">
                 <button><i class="fa-solid fa-crown"></i>Get Premium</button>
@@ -80,6 +76,11 @@
                 </div>
             </div>
             <div class="main-body">
+            <div class="searchdiv poppins-light">
+                    <?php
+                    include("search.php");
+                    ?>
+                </div>
 
             <div id="firstsong">
                 <div id="firstlink">Song\Telugu Trending\[iSongs.info] 01 - Nandanandanaa.mp3</div>
@@ -118,6 +119,11 @@
             </div>
 
             <div class="albumsm">
+            <div class="searchdiv poppins-light">
+                    <?php
+                    include("search.php");
+                    ?>
+                </div>
             <div class="albums">
                 <?php include("album.php"); ?>
             </div>

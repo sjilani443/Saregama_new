@@ -52,6 +52,83 @@ $(document).ready(function () {
     $(".singers").html(`(${singers})`);
   };
 
+  $(".play").click(function () {
+    if (!currentSong.paused) {
+        console.log("Pause avvai");
+        currentSong.pause();
+        $(this).html(`<i class="fa-solid fa-play"></i>`);
+    } else {
+        currentSong.play();
+        $(this).html(`<i class="fa-solid fa-pause"></i>`);
+    }
+});
+
+
+  //seekbar
+  $(".seekbar").click(function (e) {
+      var seekbarWidth = $(this).width();
+      var clickX = e.pageX - $(this).offset().left;
+      var seekbarPercentage = (clickX / seekbarWidth) * 100;
+      $(".circle").css("left", seekbarPercentage + "%");
+  
+      if (!isNaN(currentSong.duration) && isFinite(currentSong.duration)) {
+        currentSong.currentTime = (currentSong.duration * seekbarPercentage) / 100;
+      }
+  });
+
+  // Update the seekbar position as the audio plays
+  currentSong.addEventListener("timeupdate", function () {
+    var seekbarPercentage =
+      (currentSong.currentTime / currentSong.duration) * 100;
+    $(".circle").css("left", seekbarPercentage + "%");
+  });
+
+  $(".seekbar").mousedown(function (e) {
+    e.preventDefault();
+  });
+
+  let prev = $(".prev");
+  prev.click(function (element) {
+    let prevIndex = (ind - 1 + asong.length) % asong.length; // Ensure the index wraps around correctly
+    let prevCard = asong[prevIndex];
+    let song = $(prevCard).find(":first-child").html();
+    playmusic(song);
+    let songinfo = $(prevCard).find("#song").html();
+    let songimg = $(prevCard).find(".imgg img").attr("src");
+    let singers = $(prevCard).find("#singers").html();
+    addtoplaybar(songinfo, songimg, singers, prevIndex); // Change nextIndex to prevIndex
+    ind = prevIndex;
+  });
+
+  //Next Button
+  let next = $(".next");
+  next.click(function (element) {
+    console.log("Previous Button clicked");
+    let nextIndex = (ind + 1 + asong.length) % asong.length; // Ensure the index wraps around correctly
+    let nextCard = asong[nextIndex];
+    let song = $(nextCard).find(":first-child").html();
+    playmusic(song);
+    let songinfo = $(nextCard).find("#song").html();
+    let songimg = $(nextCard).find(".imgg img").attr("src");
+    let singers = $(nextCard).find("#singers").html();
+    addtoplaybar(songinfo, songimg, singers, nextIndex);
+    ind = nextIndex;
+  });
+
+  $(".volume")
+    .children()
+    .last()
+    .change(function (e) {
+      console.log($(e.target).val());
+      currentSong.volume = parseInt($(e.target).val()) / 100;
+    });
+
+  console.log(currentSong.currentTime);
+  if (currentSong.currentTime == currentSong.duration) {
+    $(".buttons").children().last().click();
+  }
+  
+
   var fsonginfo = $("#firstname").html();
   var fsongimg =
     "https://c.saavncdn.com/800/Nandanandanaa-From-The-Family-Star-Telugu-2024-20240207141003-500x500.jpg";
@@ -80,6 +157,7 @@ $(document).off("click", ".searchsong").on("click", ".searchsong", function () {
   playmusic(songlink);
   addtoplaybar(songinfo, songimg, singers, index);
   $(".searchdiv").css("display", "none");
+  main();
 });
 
 
@@ -180,82 +258,5 @@ $(document).off("click", ".searchsong").on("click", ".searchsong", function () {
         ind = index;
       });
     });
-
-    $(".play").click(function () {
-      if (!currentSong.paused) {
-          console.log("Pause avvai");
-          currentSong.pause();
-          $(this).html(`<i class="fa-solid fa-play"></i>`);
-      } else {
-          currentSong.play();
-          $(this).html(`<i class="fa-solid fa-pause"></i>`);
-      }
-  });
-  
-
-    //seekbar
-    
-      $(".seekbar").click(function (e) {
-        var seekbarWidth = $(this).width();
-        var clickX = e.pageX - $(this).offset().left;
-        var seekbarPercentage = (clickX / seekbarWidth) * 100;
-        $(".circle").css("left", seekbarPercentage + "%");
-    
-        if (!isNaN(currentSong.duration) && isFinite(currentSong.duration)) {
-          currentSong.currentTime = (currentSong.duration * seekbarPercentage) / 100;
-        }
-      });
-
-    // Update the seekbar position as the audio plays
-    currentSong.addEventListener("timeupdate", function () {
-      var seekbarPercentage =
-        (currentSong.currentTime / currentSong.duration) * 100;
-      $(".circle").css("left", seekbarPercentage + "%");
-    });
-
-    $(".seekbar").mousedown(function (e) {
-      e.preventDefault();
-    });
-
-    let prev = $(".prev");
-    prev.click(function (element) {
-      let prevIndex = (ind - 1 + asong.length) % asong.length; // Ensure the index wraps around correctly
-      let prevCard = asong[prevIndex];
-      let song = $(prevCard).find(":first-child").html();
-      playmusic(song);
-      let songinfo = $(prevCard).find("#song").html();
-      let songimg = $(prevCard).find(".imgg img").attr("src");
-      let singers = $(prevCard).find("#singers").html();
-      addtoplaybar(songinfo, songimg, singers, prevIndex); // Change nextIndex to prevIndex
-      ind = prevIndex;
-    });
-
-    //Next Button
-    let next = $(".next");
-    next.click(function (element) {
-      console.log("Previous Button clicked");
-      let nextIndex = (ind + 1 + asong.length) % asong.length; // Ensure the index wraps around correctly
-      let nextCard = asong[nextIndex];
-      let song = $(nextCard).find(":first-child").html();
-      playmusic(song);
-      let songinfo = $(nextCard).find("#song").html();
-      let songimg = $(nextCard).find(".imgg img").attr("src");
-      let singers = $(nextCard).find("#singers").html();
-      addtoplaybar(songinfo, songimg, singers, nextIndex);
-      ind = nextIndex;
-    });
-
-    $(".volume")
-      .children()
-      .last()
-      .change(function (e) {
-        console.log($(e.target).val());
-        currentSong.volume = parseInt($(e.target).val()) / 100;
-      });
-
-    console.log(currentSong.currentTime);
-    if (currentSong.currentTime == currentSong.duration) {
-      $(".buttons").children().last().click();
-    }
   }
 });
