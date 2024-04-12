@@ -240,7 +240,7 @@ button:hover {
 
 .main-body {
   width: 85%;
-  height: 90%;
+  height: 96%;
   background-color: #005d7c31;
   color: white;
   border-radius: 8px;
@@ -435,14 +435,12 @@ button:hover {
 .albumsm
 {
   width: 80%;
-    height: 81%;
+    height: 93%;
     color: white;
     border-radius: 8px;
     position: relative;
     display: none;
     flex-direction: column;
-    /* align-items: center; */
-    /* justify-content: center; */
     background-color: #55c2f131;
     overflow:scroll;
 }

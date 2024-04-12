@@ -14,9 +14,6 @@ $(document).ready(function () {
       mainBody.css("display", "flex");
       albumsDiv.css("display", "none");
       console.log("switchhh");
-    } else {
-      mainBody.css("display", "none");
-      albumsDiv.css("display", "flex");
     }
   });
   $(".logo").on("click", function () {
@@ -27,6 +24,8 @@ $(document).ready(function () {
 
   const playmusic = (track, pause = false) => {
     $(".playbar").css("display", "flex");
+    $(".albums").css("padding-bottom","55px");
+    $(".main-body").css("padding-bottom","55px");
     if (!pause) {
       console.log("Pausing", currentSong);
       currentSong.pause();
