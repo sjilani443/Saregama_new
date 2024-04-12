@@ -26,6 +26,7 @@ $(document).ready(function () {
   let isPlaying = false; // Track if a song is currently playing
 
   const playmusic = (track, pause = false) => {
+    $(".playbar").css("display", "flex");
     if (!pause) {
       console.log("Pausing", currentSong);
       currentSong.pause();
@@ -38,6 +39,7 @@ $(document).ready(function () {
       console.log("Pause optino ravali");
       play.html(`<i class="fa-solid fa-pause"></i>`);
     } else {
+      console.log("Pausiing", currentSong);
       currentSong.pause();
       isPlaying = false;
 
@@ -59,6 +61,8 @@ $(document).ready(function () {
       currentSong.pause();
       $(this).html(`<i class="fa-solid fa-play"></i>`);
     } else {
+      console.log("Play avvali");
+      console.log(currentSong);
       currentSong.play();
       $(this).html(`<i class="fa-solid fa-pause"></i>`);
     }
@@ -136,7 +140,7 @@ $(document).ready(function () {
     console.log(asong);
     asong = shuffle(asong);
     console.log(asong);
-    let shuffledcard=asong[0];
+    let shuffledcard = asong[0];
     let song = $(shuffledcard).find(":first-child").html();
     if (!currentSong.paused) {
       currentSong.pause();
@@ -160,16 +164,6 @@ $(document).ready(function () {
   if (currentSong.currentTime == currentSong.duration) {
     $(".buttons").children().last().click();
   }
-
-  var fsonginfo = $("#firstname").html();
-  var fsongimg =
-    "https://c.saavncdn.com/800/Nandanandanaa-From-The-Family-Star-Telugu-2024-20240207141003-500x500.jpg";
-  var fsingers = $("#firstsingers").html();
-  var findex = $("#firstid").html(); // Corrected to use the correct ID
-  var fsonglink = $("#firstlink").html();
-  console.log(fsonginfo, fsongimg, fsingers, findex, fsonglink);
-  playmusic(fsonglink, true);
-  addtoplaybar(fsonginfo, fsongimg, fsingers, findex);
 
   $("#searchInput").on("focus", function () {
     $(".searchdiv").css("display", "flex");
@@ -272,11 +266,9 @@ $(document).ready(function () {
     let album = $(".album");
     console.log(album);
     $(asong).each(function (index, e) {
-
-      $(e).click(function (element) 
-      {
-        $('.asong').removeClass('selected');
-        $(e).addClass('selected');
+      $(e).click(function (element) {
+        $(".asong").removeClass("selected");
+        $(e).addClass("selected");
         console.log($(e).find(":first-child").html());
         if (currentSong.paused) {
           playmusic($(e).find(":first-child").html());
@@ -292,4 +284,13 @@ $(document).ready(function () {
       });
     });
   }
+  const popup = document.getElementById("popup");
+  const closeBtn = document.getElementById("closeBtn");
+
+  $("#premium").click(function () {
+    popup.style.display = "block";
+  });
+  closeBtn.addEventListener("click", function () {
+    popup.style.display = "none";
+  });
 });

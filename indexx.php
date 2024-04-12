@@ -30,10 +30,10 @@
             </div>
             <div class="searchbar">
                 <input type="text" id="searchInput" placeholder="search music, artists, albums...." />
-                
+
             </div>
             <div class="sub">
-                <button><i class="fa-solid fa-crown"></i>Get Premium</button>
+                <button id="premium"><i class="fa-solid fa-crown"></i>Get Premium</button>
             </div>
             <div class="login">
                 <button>
@@ -44,6 +44,40 @@
         <!-- nav ends here -->
 
         <div class="main">
+            <div class="premium poppins-light">
+                <div class="popup-container" id="popup">
+                    <div class="popup">
+                        <h2>Upgrade to Premium</h2>
+                        <p>Benefits by getting Premium:</p>
+                        <div class="premcards">
+                        <div class="card1">
+                            <div class="VIP"><h3>VIP</h3></div>
+                        <ul>
+                            <li>No Ads or Interuptions</li>
+                            <li>Offline Downloads</li>
+                            <li>High Quality Audio</li>
+                            <li>Presonalised Albums</li>
+                        </ul>
+                        <button class="getnow poppins-light">Get Now</button>
+                        </div>
+                        <div class="card2">
+                            <div class="pro"><h3>PRO</h3></div>
+                        <ul>
+                            <li>No Ads or Interuptions</li>
+                            <li>Offline Downloads</li>
+                            <li>High Quality Audio</li>
+                            <li>Presonalised Albums</li>
+                            <li>Multiple Devices</li>
+                            <li>Family Plan</li>
+                        </ul>
+                        <button class="getnow poppins-light">Get Now</button>
+                        </div>
+                        </div>
+                        <button id="closeBtn">Close</button>
+                        <!-- Add your subscription form here -->
+                    </div>
+                </div>
+            </div>
             <div class="sidebar">
                 <div class="options">
                     <button id="home"><i class="fa-solid fa-house"></i>Home</button>
@@ -76,20 +110,12 @@
                 </div>
             </div>
             <div class="main-body">
-            <div class="searchdiv poppins-light">
+                <div class="searchdiv poppins-light">
                     <?php
                     include("search.php");
                     ?>
                 </div>
 
-            <div id="firstsong">
-                <div id="firstlink">Song\Telugu Trending\[iSongs.info] 01 - Nandanandanaa.mp3</div>
-                <div class="firstimgg">
-                    <img src="https://c.saavncdn.com/800/Nandanandanaa-From-The-Family-Star-Telugu-2024-20240207141003-500x500.jpg" alt=""></div>
-                <div id="firstname">Nandanandana</div>
-                <div id="firstsingers">Sid Sriram,Gopi Sunder</div>
-                <div id="firstid">1</div>
-            </div>
                 <div class="foryou ">
                     <p class="poppins-light">FOR YOU</p>
                     <div class="cardcontainer">
@@ -112,24 +138,25 @@
 
                     </div>
                 </div>
-                <?php include("playbar.html"); ?>  
+                <?php include("playbar.html"); ?>
             </div>
 
             <div class="albumsm">
-            <div class="searchdiv poppins-light">
+                <div class="searchdiv poppins-light">
                     <?php
                     include("search.php");
                     ?>
                 </div>
-            <div class="albums">
-                <?php include("album.php"); ?>
-            </div>
-            <?php include("playbar.html"); ?>
+                <div class="albums">
+                    <?php include("album.php"); ?>
+                </div>
+                <?php include("playbar.html"); ?>
             </div>
 
         </div>
     </div>
 </body>
+
 </html>
 
 <?php
