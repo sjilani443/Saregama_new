@@ -148,6 +148,20 @@ $(document).ready(function () {
     addtoplaybar(songinfo, songimg, singers, 0);
   });
 
+  currentSong.addEventListener('ended', function() {
+    // Play the next song automatically
+    let nextIndex = (ind + 1) % asong.length; // Calculate the index of the next song
+    let nextCard = asong[nextIndex];
+    let song = $(nextCard).find(":first-child").html();
+    playmusic(song);
+    let songinfo = $(nextCard).find("#song").html();
+    let songimg = $(nextCard).find(".imgg img").attr("src");
+    let singers = $(nextCard).find("#singers").html();
+    addtoplaybar(songinfo, songimg, singers, nextIndex);
+    ind = nextIndex;
+});
+
+
   $(".volume")
     .children()
     .last()
