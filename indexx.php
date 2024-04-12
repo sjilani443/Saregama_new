@@ -93,9 +93,6 @@
                 <div class="foryou ">
                     <p class="poppins-light">FOR YOU</p>
                     <div class="cardcontainer">
-                        <form id="hoverIndexForm" method="GET" action="indexx.php">
-                            <input type="hidden" name="hoverIndex" id="hoverIndexInput">
-                        </form>
                         <?php
                         include("db.php");
                         $sql = "SELECT * FROM Albums_main1";

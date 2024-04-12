@@ -264,7 +264,7 @@ button:hover {
   border-radius: 4px;
 }
 .foryou > p {
-  margin-left: 50px;
+  margin-left: 3.5%;
   font-weight: 1000;
 }
 
@@ -273,11 +273,12 @@ button:hover {
   justify-content: space-evenly;
 }
 
+
 .card {
   display: flex;
   flex-direction: column;
   padding: 5px 8px;
-  width: 120px;
+  width: 130px;
   background-color: rgb(52, 54, 55);
   border-radius: 5px;
   gap: 10px;
@@ -468,6 +469,7 @@ button:hover {
 }
 
 
+
  .album
 {
   width: 100%;
@@ -530,4 +532,8 @@ button:hover {
   width: 40px; 
   height: 40px;
 }
-
+.selected {
+  background-color:#86bcdec0;
+  color: black;
+  font-weight: bolder;
+}
