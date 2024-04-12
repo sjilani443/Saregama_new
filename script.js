@@ -4,6 +4,7 @@ $(document).ready(function () {
 
   let currentSong = new Audio();
   let play = $(".play");
+  let asong;
 
   $("#home").on("click", function () {
     var mainBody = $(".main-body");
@@ -26,25 +27,25 @@ $(document).ready(function () {
 
   const playmusic = (track, pause = false) => {
     if (!pause) {
-        console.log("Pausing",currentSong);
-        currentSong.pause();
-        // Set the source for the current song object and play it
-        currentSong.src = track;
-        currentSong.play();
-        isPlaying = true;
-          // $(".fa-play").hide();
-          // $(".fa-pause").show();
-          console.log("Pause optino ravali");
-          play.html(`<i class="fa-solid fa-pause"></i>`);
+      console.log("Pausing", currentSong);
+      currentSong.pause();
+      // Set the source for the current song object and play it
+      currentSong.src = track;
+      currentSong.play();
+      isPlaying = true;
+      // $(".fa-play").hide();
+      // $(".fa-pause").show();
+      console.log("Pause optino ravali");
+      play.html(`<i class="fa-solid fa-pause"></i>`);
     } else {
-        currentSong.pause();
-        isPlaying = false;
-        
-        // $(".fa-pause").hide();
-        // $(".fa-play").show();
-        play.html(`<i class="fa-solid fa-play"></i>`);
+      currentSong.pause();
+      isPlaying = false;
+
+      // $(".fa-pause").hide();
+      // $(".fa-play").show();
+      play.html(`<i class="fa-solid fa-play"></i>`);
     }
-};
+  };
 
   const addtoplaybar = (songinfo, songimg, singers, index) => {
     $(".songinfo").html(`Playing : ${songinfo}`);
@@ -54,26 +55,26 @@ $(document).ready(function () {
 
   $(".play").click(function () {
     if (!currentSong.paused) {
-        console.log("Pause avvai");
-        currentSong.pause();
-        $(this).html(`<i class="fa-solid fa-play"></i>`);
+      console.log("Pause avvai");
+      currentSong.pause();
+      $(this).html(`<i class="fa-solid fa-play"></i>`);
     } else {
-        currentSong.play();
-        $(this).html(`<i class="fa-solid fa-pause"></i>`);
+      currentSong.play();
+      $(this).html(`<i class="fa-solid fa-pause"></i>`);
     }
-});
-
+  });
 
   //seekbar
   $(".seekbar").click(function (e) {
-      var seekbarWidth = $(this).width();
-      var clickX = e.pageX - $(this).offset().left;
-      var seekbarPercentage = (clickX / seekbarWidth) * 100;
-      $(".circle").css("left", seekbarPercentage + "%");
-  
-      if (!isNaN(currentSong.duration) && isFinite(currentSong.duration)) {
-        currentSong.currentTime = (currentSong.duration * seekbarPercentage) / 100;
-      }
+    var seekbarWidth = $(this).width();
+    var clickX = e.pageX - $(this).offset().left;
+    var seekbarPercentage = (clickX / seekbarWidth) * 100;
+    $(".circle").css("left", seekbarPercentage + "%");
+
+    if (!isNaN(currentSong.duration) && isFinite(currentSong.duration)) {
+      currentSong.currentTime =
+        (currentSong.duration * seekbarPercentage) / 100;
+    }
   });
 
   // Update the seekbar position as the audio plays
@@ -115,6 +116,38 @@ $(document).ready(function () {
     ind = nextIndex;
   });
 
+  function shuffle(array) {
+    let shuffledArray = [];
+    let usedIndexes = [];
+
+    let i = 0;
+    while (i < array.length) {
+      let randomNumber = Math.floor(Math.random() * array.length);
+      if (!usedIndexes.includes(randomNumber)) {
+        shuffledArray.push(array[randomNumber]);
+        usedIndexes.push(randomNumber);
+        i++;
+      }
+    }
+    return shuffledArray;
+  }
+  $(".shuffle").click(function (element) {
+    console.log("Shuffle button clicked");
+    console.log(asong);
+    asong = shuffle(asong);
+    console.log(asong);
+    let shuffledcard=asong[0];
+    let song = $(shuffledcard).find(":first-child").html();
+    if (!currentSong.paused) {
+      currentSong.pause();
+      playmusic(song);
+    }
+    let songinfo = $(shuffledcard).find("#song").html();
+    let songimg = $(shuffledcard).find(".imgg img").attr("src");
+    let singers = $(shuffledcard).find("#singers").html();
+    addtoplaybar(songinfo, songimg, singers, 0);
+  });
+
   $(".volume")
     .children()
     .last()
@@ -127,7 +160,6 @@ $(document).ready(function () {
   if (currentSong.currentTime == currentSong.duration) {
     $(".buttons").children().last().click();
   }
-  
 
   var fsonginfo = $("#firstname").html();
   var fsongimg =
@@ -148,18 +180,19 @@ $(document).ready(function () {
 
   // Click event for .searchsong
   // Unbind the click event for ".searchsong" before binding it again
-$(document).off("click", ".searchsong").on("click", ".searchsong", function () {
-  var songinfo = $(this).find("#ssong").html();
-  var songimg = $(this).find(".simgg img").attr("src");
-  var singers = $(this).find("#ssingers").html();
-  var index = $(this).find("#searchid").html();
-  var songlink = $(this).find("#slink").html();
-  playmusic(songlink);
-  addtoplaybar(songinfo, songimg, singers, index);
-  $(".searchdiv").css("display", "none");
-  main();
-});
-
+  $(document)
+    .off("click", ".searchsong")
+    .on("click", ".searchsong", function () {
+      var songinfo = $(this).find("#ssong").html();
+      var songimg = $(this).find(".simgg img").attr("src");
+      var singers = $(this).find("#ssingers").html();
+      var index = $(this).find("#searchid").html();
+      var songlink = $(this).find("#slink").html();
+      playmusic(songlink);
+      addtoplaybar(songinfo, songimg, singers, index);
+      $(".searchdiv").css("display", "none");
+      main();
+    });
 
   $(document).on("mouseleave", ".searchdiv", function (event) {
     $(".searchdiv").css("display", "none");
@@ -196,10 +229,9 @@ $(document).off("click", ".searchsong").on("click", ".searchsong", function () {
     console.log("Hovered index:", hoveredIndex);
   });
 
-  currentSong.onerror = function(error) {
-    console.error('Audio error:', error);
+  currentSong.onerror = function (error) {
+    console.error("Audio error:", error);
   };
-  
 
   var mainBody = $(".main-body");
   var albumsDiv = $(".albumsm");
@@ -235,19 +267,16 @@ $(document).off("click", ".searchsong").on("click", ".searchsong", function () {
   });
   let ind;
   function main() {
-    let asong = $(".asong");
+    asong = $(".asong");
     console.log(asong);
     let album = $(".album");
     console.log(album);
     $(asong).each(function (index, e) {
       $(e).click(function (element) {
         console.log($(e).find(":first-child").html());
-        if(currentSong.paused)
-        {
-        playmusic($(e).find(":first-child").html());
-        }
-        else
-        {
+        if (currentSong.paused) {
+          playmusic($(e).find(":first-child").html());
+        } else {
           currentSong.pause();
           playmusic($(e).find(":first-child").html());
         }
