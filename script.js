@@ -24,7 +24,7 @@ $(document).ready(function () {
 
   const playmusic = (track, pause = false) => {
     $(".playbar").css("display", "flex");
-    $(".albums").css("padding-bottom","55px");
+    $(".albums").css("padding-bottom","60px");
     $(".main-body").css("padding-bottom","55px");
     if (!pause) {
       console.log("Pausing", currentSong);
@@ -122,7 +122,6 @@ $(document).ready(function () {
   function shuffle(array) {
     let shuffledArray = [];
     let usedIndexes = [];
-
     let i = 0;
     while (i < array.length) {
       let randomNumber = Math.floor(Math.random() * array.length);
@@ -135,10 +134,7 @@ $(document).ready(function () {
     return shuffledArray;
   }
   $(".shuffle").click(function (element) {
-    console.log("Shuffle button clicked");
-    console.log(asong);
     asong = shuffle(asong);
-    console.log(asong);
     let shuffledcard = asong[0];
     let song = $(shuffledcard).find(":first-child").html();
     if (!currentSong.paused) {

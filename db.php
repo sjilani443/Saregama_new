@@ -15,5 +15,4 @@ try {
 // if ($conn) {
 //     echo "You are connected";
 // }
-
 ?>

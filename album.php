@@ -1,7 +1,5 @@
 <?php
 include("db.php");
-
-
 $hoverIndex = isset($_GET['hoverIndex']) ? $_GET['hoverIndex'] : null;
 
 // Fetch albums data based on hoverIndex

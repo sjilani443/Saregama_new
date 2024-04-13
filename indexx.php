@@ -117,17 +117,40 @@
                 </div>
 
                 <div class="foryou ">
-                    <p class="poppins-light">FOR YOU</p>
+                    <p class="poppins-light">For You</p>
                     <div class="cardcontainer">
                         <?php
                         include("db.php");
-                        $sql = "SELECT * FROM Albums_main1";
+                        $sql = "SELECT * FROM albums_main1";
                         $res = mysqli_query($conn, $sql);
                         if (mysqli_num_rows($res) > 0) {
                             while ($row = mysqli_fetch_assoc($res)) {
                                 echo "<div class='card poppins-light '>";
                                 echo "<img src='$row[Album_Cover]' alt='' />";
-                                echo "<p>$row[Album_Name] </p>";
+                                echo "<div class='Aname'><p>$row[Album_Name] </p></div>";
+                                echo "<p class='index'>$row[id] </p>";
+                                echo "<div class='icon'>";
+                                echo "<i class='fa-solid fa-play'></i> </div>          
+                        </div>";
+                            }
+                        }
+                        ?>
+
+                    </div>
+                </div>
+
+                <div class="foryou ">
+                    <p class="poppins-light">Top Artists</p>
+                    <div class="cardcontainer">
+                        <?php
+                        include("db.php");
+                        $sql = "SELECT * FROM albums_main2";
+                        $res = mysqli_query($conn, $sql);
+                        if (mysqli_num_rows($res) > 0) {
+                            while ($row = mysqli_fetch_assoc($res)) {
+                                echo "<div class='card poppins-light '>";
+                                echo "<img src='$row[Album_Cover]' alt='' />";
+                                echo "<div class='Aname'><p>$row[Album_Name] </p></div>";
                                 echo "<p class='index'>$row[id] </p>";
                                 echo "<div class='icon'>";
                                 echo "<i class='fa-solid fa-play'></i> </div>          
