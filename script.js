@@ -52,6 +52,7 @@ $(document).ready(function () {
     $(".songinfo").html(`Playing : ${songinfo}`);
     $(".songimg").html(`<img src="${songimg}" alt="">`);
     $(".singers").html(`(${singers})`);
+    
   };
 
   $(".play").click(function () {
@@ -119,6 +120,19 @@ $(document).ready(function () {
     ind = nextIndex;
   });
 
+
+  currentSong.addEventListener("ended", function() {
+    let nextIndex = (ind + 1 + asong.length) % asong.length; // Ensure the index wraps around correctly
+    let nextCard = asong[nextIndex];
+    let song = $(nextCard).find(":first-child").html();
+    playmusic(song);
+    let songinfo = $(nextCard).find("#song").html();
+    let songimg = $(nextCard).find(".imgg img").attr("src");
+    let singers = $(nextCard).find("#singers").html();
+    addtoplaybar(songinfo, songimg, singers, nextIndex);
+    ind = nextIndex;
+  });
+
   function shuffle(array) {
     let shuffledArray = [];
     let usedIndexes = [];
@@ -146,6 +160,7 @@ $(document).ready(function () {
     let singers = $(shuffledcard).find("#singers").html();
     addtoplaybar(songinfo, songimg, singers, 0);
   });
+
 
   $(".volume")
     .children()

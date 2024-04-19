@@ -513,6 +513,16 @@ button:hover {
   border: 2px solid black;
   font-weight: 1000;
 }
+.selectedd
+{
+  cursor: pointer;
+  background-color:#86bcdec0;
+  color: black;
+  border: 2px solid black;
+  font-weight: 1000;
+}
+
+
 .asong div
 {
   display: flex;
