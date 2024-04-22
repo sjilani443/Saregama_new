@@ -303,4 +303,12 @@ $(document).ready(function () {
   closeBtn.addEventListener("click", function () {
     popup.style.display = "none";
   });
+
+  $("#logi").click(function(){
+    console.log("Button Clicked");
+    window.location.href = "signin.php";
+});
+$("#logout").click(function(){
+  window.location.href = "indexx.php";
+});
 });

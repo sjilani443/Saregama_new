@@ -36,7 +36,7 @@
                 <button id="premium"><i class="fa-solid fa-crown"></i>Get Premium</button>
             </div>
             <div class="login">
-                <button>
+                <button id="logi">
                     <i class="fa-solid fa-arrow-right-to-bracket"></i>Login / Signup
                 </button>
             </div>
@@ -104,7 +104,7 @@
 
                 <div class="logout">
                     <button><i class="fa-solid fa-gear"></i>Settings</button>
-                    <button>
+                    <button id="logout">
                         <i class="fa-solid fa-right-from-bracket"></i>Logout
                     </button>
                 </div>
@@ -161,6 +161,30 @@
 
                     </div>
                 </div>
+
+                <div class="foryou ">
+                    <p class="poppins-light">Top Albums</p>
+                    <div class="cardcontainer">
+                        <?php
+                        include("db.php");
+                        $sql = "SELECT * FROM albums_main3";
+                        $res = mysqli_query($conn, $sql);
+                        if (mysqli_num_rows($res) > 0) {
+                            while ($row = mysqli_fetch_assoc($res)) {
+                                echo "<div class='card poppins-light '>";
+                                echo "<img src='$row[Album_Cover]' alt='' />";
+                                echo "<div class='Aname'><p>$row[Album_Name] </p></div>";
+                                echo "<p class='index'>$row[id] </p>";
+                                echo "<div class='icon'>";
+                                echo "<i class='fa-solid fa-play'></i> </div>          
+                        </div>";
+                            }
+                        }
+                        ?>
+
+                    </div>
+                </div>
+
                 <?php include("playbar.html"); ?>
             </div>
 
