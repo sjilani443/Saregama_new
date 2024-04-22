@@ -13,7 +13,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     if(password_verify($_POST["pass"],$user["password_hash"])){
       session_start();
       $_SESSION["name"]=$user["name"];
-      header("Location: login.php");
+      $_SESSION["email"]=$user["email"];
+      header("Location: indexx.php");
       exit;
     }
   }
@@ -79,7 +80,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
       if($isvalid):?>
       <em>Invalid details</em>
       <?php endif; ?>
-      <form action="indexx.php" method="post">
+      <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
         <div>
           <label for="email">Email </label>
           <input type="email" id="email" name="email" value="<?= htmlspecialchars($_POST["email"]?? "")?>" />

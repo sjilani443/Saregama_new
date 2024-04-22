@@ -52,7 +52,7 @@
   <body>
     <fieldset>
       <h2>Sign Up</h2>
-      <form action="indexx.php" method="post" novalidate>
+      <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post" novalidate>
         <div>
           <label for="name">Name  </label>
           <input type="text" id="name" name="name" />
@@ -118,5 +118,15 @@ else{
   header("Location: indexx.php");
   exit;
 }
+  $sql="SELECT * from users where email ='$email'";
+  $res=mysqli_query($conn,$sql);
+  $user = mysqli_fetch_array($res, MYSQLI_ASSOC);
+if($user){
+    session_start();
+    $_SESSION["name"]=$user["name"];
+    $_SESSION["email"]=$user["email"];
+    header("Location: indexx.php");
+    exit;
+  }
 
 ?>

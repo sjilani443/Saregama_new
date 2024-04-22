@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,28 +53,32 @@
                         <h2>Upgrade to Premium</h2>
                         <p>Benefits by getting Premium:</p>
                         <div class="premcards">
-                        <div class="card1">
-                            <div class="VIP"><h3>VIP</h3></div>
-                        <ul>
-                            <li>No Ads or Interuptions</li>
-                            <li>Offline Downloads</li>
-                            <li>High Quality Audio</li>
-                            <li>Presonalised Albums</li>
-                        </ul>
-                        <button class="getnow poppins-light">Get Now</button>
-                        </div>
-                        <div class="card2">
-                            <div class="pro"><h3>PRO</h3></div>
-                        <ul>
-                            <li>No Ads or Interuptions</li>
-                            <li>Offline Downloads</li>
-                            <li>High Quality Audio</li>
-                            <li>Presonalised Albums</li>
-                            <li>Multiple Devices</li>
-                            <li>Family Plan</li>
-                        </ul>
-                        <button class="getnow poppins-light">Get Now</button>
-                        </div>
+                            <div class="card1">
+                                <div class="VIP">
+                                    <h3>VIP</h3>
+                                </div>
+                                <ul>
+                                    <li>No Ads or Interuptions</li>
+                                    <li>Offline Downloads</li>
+                                    <li>High Quality Audio</li>
+                                    <li>Presonalised Albums</li>
+                                </ul>
+                                <button class="getnow poppins-light">Get Now</button>
+                            </div>
+                            <div class="card2">
+                                <div class="pro">
+                                    <h3>PRO</h3>
+                                </div>
+                                <ul>
+                                    <li>No Ads or Interuptions</li>
+                                    <li>Offline Downloads</li>
+                                    <li>High Quality Audio</li>
+                                    <li>Presonalised Albums</li>
+                                    <li>Multiple Devices</li>
+                                    <li>Family Plan</li>
+                                </ul>
+                                <button class="getnow poppins-light">Get Now</button>
+                            </div>
                         </div>
                         <button id="closeBtn">Close</button>
                         <!-- Add your subscription form here -->
@@ -86,8 +93,16 @@
                         My Profile
                     </button>
                     <div class="profile">
-                        <p>Jeelani Shaik</p>
-                        <p>sjilani443@gmail.com</p>
+                        <?php
+                        if(isset($_SESSION["name"])): ?>
+                        <p><?php echo $_SESSION["name"]; ?></p>
+                        <?php endif; ?>
+                        <?php
+                        if(isset($_SESSION["email"])): ?>
+                        <p><?php echo $_SESSION["email"]; ?></p>
+                        <?php endif; ?>
+                        <!-- <p>sjilani443@gmail.com</p> -->
+
                     </div>
                     <button><i class="fa-solid fa-chart-simple"></i>Top Charts</button>
                     <button>

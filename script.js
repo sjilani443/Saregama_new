@@ -24,8 +24,8 @@ $(document).ready(function () {
 
   const playmusic = (track, pause = false) => {
     $(".playbar").css("display", "flex");
-    $(".albums").css("padding-bottom", "60px");
-    $(".main-body").css("padding-bottom", "55px");
+    $(".albums").css("padding-bottom", "9vh");
+    $(".main-body").css("padding-bottom", "12vh");
     $(".asong").removeClass("selected");
 
     // Select the currently playing song
@@ -318,6 +318,6 @@ $(document).ready(function () {
     window.location.href = "signin.php";
 });
 $("#logout").click(function(){
-  window.location.href = "indexx.php";
+  window.location.href = "signin.php";
 });
 });
