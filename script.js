@@ -24,8 +24,18 @@ $(document).ready(function () {
 
   const playmusic = (track, pause = false) => {
     $(".playbar").css("display", "flex");
-    $(".albums").css("padding-bottom","60px");
-    $(".main-body").css("padding-bottom","55px");
+    $(".albums").css("padding-bottom", "60px");
+    $(".main-body").css("padding-bottom", "55px");
+    $(".asong").removeClass("selected");
+
+    // Select the currently playing song
+    $(".asong").each(function () {
+      // Check if the track of the current .asong matches the currently playing track
+      if ($(this).find(":first-child").html() === track) {
+        $(this).addClass("selected"); // Add the 'selected' class
+        return false; // Exit the loop after the first match is found
+      }
+    });
     if (!pause) {
       console.log("Pausing", currentSong);
       currentSong.pause();
@@ -52,7 +62,6 @@ $(document).ready(function () {
     $(".songinfo").html(`Playing : ${songinfo}`);
     $(".songimg").html(`<img src="${songimg}" alt="">`);
     $(".singers").html(`(${singers})`);
-    
   };
 
   $(".play").click(function () {
@@ -98,6 +107,8 @@ $(document).ready(function () {
     let prevCard = asong[prevIndex];
     let song = $(prevCard).find(":first-child").html();
     playmusic(song);
+    console.log(prevCard);
+    $(prevCard).addClass("selected");
     let songinfo = $(prevCard).find("#song").html();
     let songimg = $(prevCard).find(".imgg img").attr("src");
     let singers = $(prevCard).find("#singers").html();
@@ -113,6 +124,7 @@ $(document).ready(function () {
     let nextCard = asong[nextIndex];
     let song = $(nextCard).find(":first-child").html();
     playmusic(song);
+    $(nextCard).addClass("selected");
     let songinfo = $(nextCard).find("#song").html();
     let songimg = $(nextCard).find(".imgg img").attr("src");
     let singers = $(nextCard).find("#singers").html();
@@ -120,12 +132,12 @@ $(document).ready(function () {
     ind = nextIndex;
   });
 
-
-  currentSong.addEventListener("ended", function() {
+  currentSong.addEventListener("ended", function () {
     let nextIndex = (ind + 1 + asong.length) % asong.length; // Ensure the index wraps around correctly
     let nextCard = asong[nextIndex];
     let song = $(nextCard).find(":first-child").html();
     playmusic(song);
+    $(nextCard).addClass("selected");
     let songinfo = $(nextCard).find("#song").html();
     let songimg = $(nextCard).find(".imgg img").attr("src");
     let singers = $(nextCard).find("#singers").html();
@@ -160,7 +172,6 @@ $(document).ready(function () {
     let singers = $(shuffledcard).find("#singers").html();
     addtoplaybar(songinfo, songimg, singers, 0);
   });
-
 
   $(".volume")
     .children()
@@ -249,14 +260,12 @@ $(document).ready(function () {
         $(".albums").html(response);
       },
       error: function (xhr, status, error) {
-        // Handle errors that occur during the AJAX request
         console.error(xhr.responseText);
       },
       complete: function () {
         main();
       },
     });
-    // Toggle the display of mainDiv and albumsDiv accordingly
     var mainBody = $(".main-body");
     var albumsDiv = $(".albumsm");
 
