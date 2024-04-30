@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 .pt-sans-regular {
   font-family: "PT Sans", sans-serif;
@@ -28,6 +29,12 @@
   font-weight: 700;
   font-style: normal;
 }
+.montserrat{
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
 
 * {
   padding: 0;
@@ -39,6 +46,29 @@
 body
 {
   overflow: hidden;
+}
+.topchart
+{
+    width: 90vh;
+    height: 90vh;
+    color: white;
+    border-radius: 8px;
+    display: none;
+    flex-direction: column;
+    background-color: #dfe8ec31;
+    overflow:scroll;
+}
+.albumsside
+{
+  width: 80%;
+    height: 93%;
+    color: white;
+    border-radius: 8px;
+    position: relative;
+    display: none;
+    flex-direction: column;
+    background-color: #55c2f131;
+    overflow: scroll;
 }
 .body {
   height: 98%;
@@ -239,6 +269,35 @@ button:hover {
   flex-direction: column-reverse;
   margin-bottom: 20px;
   gap: 10px;
+}
+
+.usernamemain
+{
+  width: 50%;
+  height: 25vh;
+  font-size: larger;
+  padding: 10px 40px;
+  font-size: 30px;
+  margin: 0px 10px;
+  margin-top: 10px;
+  background-color: #040f16;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px 10px 0px 0px;
+}
+.enjoy
+{
+  width: 50%;
+  height: 25vh;
+  font-size: larger;
+  padding: 0px 40px 10px 40px;
+  font-size: 20px;
+  margin: 0px 10px;
+  margin-bottom: 5px;
+  background-color: #040f16;
+  display: flex;
+  justify-content: center;
+  border-radius: 0px 0px 10px 10px;
 }
 
 .main-body {

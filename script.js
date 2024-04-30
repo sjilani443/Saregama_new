@@ -16,6 +16,19 @@ $(document).ready(function () {
       console.log("switchhh");
     }
   });
+
+  $("#topcharts").on("click",function()
+{
+  console.log("top charts clicked");
+    var mainBody = $(".main-body");
+    var albumsDiv = $(".topchart");
+    if (mainBody.css("display") === "flex") {
+      mainBody.css("display", "none");
+      albumsDiv.css("display", "flex");
+      console.log("switchhh");
+    }
+})
+
   $(".logo").on("click", function () {
     location.reload();
   });
@@ -28,6 +41,8 @@ $(document).ready(function () {
     $(".main-body").css("padding-bottom", "12vh");
     $(".asong").removeClass("selected");
 
+    $(".usernamemain").css("display","none");
+    $(".enjoy").css("display","none");
     // Select the currently playing song
     $(".asong").each(function () {
       // Check if the track of the current .asong matches the currently playing track

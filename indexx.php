@@ -40,7 +40,13 @@ session_start();
             </div>
             <div class="login">
                 <button id="logi">
-                    <i class="fa-solid fa-arrow-right-to-bracket"></i>Login / Signup
+                    <?php if (isset($_SESSION["name"])) : ?>
+                        <p><?php echo $_SESSION["name"]; ?></p>
+                    <?php else : ?>
+                        <a href="login.php"> <!-- Change "login.php" to your actual login/signup page URL -->
+                            <i class="fa-solid fa-arrow-right-to-bracket"></i>Login / Signup
+                        </a>
+                    <?php endif; ?>
                 </button>
             </div>
         </div>
@@ -92,19 +98,18 @@ session_start();
                         <i class="fa-solid fa-user"></i>
                         My Profile
                     </button>
-                    <div class="profile">
+                    <div class="profile montserrat">
                         <?php
-                        if(isset($_SESSION["name"])): ?>
-                        <p><?php echo $_SESSION["name"]; ?></p>
+                        if (isset($_SESSION["name"])) : ?>
+                            <p><?php echo $_SESSION["name"]; ?></p>
                         <?php endif; ?>
                         <?php
-                        if(isset($_SESSION["email"])): ?>
-                        <p><?php echo $_SESSION["email"]; ?></p>
+                        if (isset($_SESSION["email"])) : ?>
+                            <p><?php echo $_SESSION["email"]; ?></p>
                         <?php endif; ?>
-                        <!-- <p>sjilani443@gmail.com</p> -->
-                        <!-- comment added -->
                     </div>
-                    <button><i class="fa-solid fa-chart-simple"></i>Top Charts</button>
+                    <button id="topcharts"><i class="fa-solid fa-chart-simple"></i>Top Charts</button>
+
                     <button>
                         <i class="fa-solid fa-arrow-up-right-dots"></i>Latest Trending
                     </button>
@@ -124,11 +129,45 @@ session_start();
                     </button>
                 </div>
             </div>
+
+            <div class="topchart albumsside">
+                <?php
+                include("db.php");
+                $sql = "SELECT * FROM albums2";
+                $res = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($res) > 0) {
+                    while ($row = mysqli_fetch_assoc($res)) {
+
+                        echo "<div class='asong poppins-light'>";
+                        echo "<div id='link'>$row[Song_link]</div>";
+                        echo "<div class='imgg'><img src='$row[Album_Cover]' alt=''></div>";
+                        echo "<div>$row[id]</div>";
+                        echo "<div id='song'>$row[Song]</div>";
+                        echo "<div id='moviename'>$row[Movie_Name]</div>";
+                        echo "<div id='singers'>$row[Singers],$row[Music_Director]</div>";
+                        echo "<div id='hero'>$row[Hero]</div>";
+                        echo "<div>$row[duration]</div>";
+                        echo "</div>";
+                    }
+                }
+                ?>
+            </div>
+
             <div class="main-body">
                 <div class="searchdiv poppins-light">
                     <?php
                     include("search.php");
                     ?>
+                </div>
+
+                <div class="usernamemain montserrat">
+                    <?php
+                    if (isset($_SESSION["name"])) : ?>
+                        <p><?php echo "Welcome " . $_SESSION["name"]; ?></p>
+                    <?php endif; ?>
+                </div>
+                <div class="enjoy montserrat">
+                    Enjoy your Music
                 </div>
 
                 <div class="foryou ">
