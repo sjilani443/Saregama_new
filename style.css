@@ -285,6 +285,28 @@ button:hover {
   justify-content: center;
   border-radius: 10px 10px 0px 0px;
 }
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 999; /* Ensure it's on top of everything */
+}
+
+.message-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #171616;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
 .enjoy
 {
   width: 50%;
@@ -409,7 +431,7 @@ button:hover {
 
 .playbar {
   width: 80%;
-  height: 13%;
+  height: 15%;
   border-radius: 10px;
   background-color: #585b5c;
   display: none;

@@ -1,0 +1,65 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: large;
+    background-image: url('https://images.unsplash.com/photo-1511300636408-a63a89df3482?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); 
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.container {
+    background-color: rgba(255, 255, 255, 0.7); 
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.login-box, .signup-box {
+    text-align: center;
+}
+
+.login-box h2, .signup-box h2 {
+    margin-bottom: 20px;
+}
+
+.login-box form div, .signup-box form div {
+    display: flex;
+    flex-direction: column;
+    font-size: larger;
+    gap: 10px;
+}
+
+.login-box form div input, .signup-box form div input {
+    height: 30px; 
+}
+
+.login-box form div button, .signup-box form div button {
+    font-size: large;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.login-box form div button:hover, .signup-box form div button:hover {
+    background-color: #4CAF50;
+}
+
+.login-box form div em, .signup-box form div em {
+    color: red;
+}
+
+.login-box div, .signup-box div {
+    margin-top: 20px;
+    font-size: larger;
+}
+
+.login-box div a, .signup-box div a {
+    color: blue;
+    text-decoration: none;
+}
+
+.login-box div a:hover, .signup-box div a:hover {
+    text-decoration: underline;
+}
