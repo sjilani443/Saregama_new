@@ -28,12 +28,24 @@ $(document).ready(function () {
 
   $("#home").on("click", function () {
     var mainBody = $(".main-body");
+    var albummaindiv = $(".albumsm");
     var albumsDiv = $(".albumsside");
 
-    if (mainBody.css("display") === "none" || albumsDiv.css("display") !== "none") {
+    if (mainBody.css("display") === "none") {
         mainBody.css("display", "flex");
-        $(".albumsside").css("display", "none");
-        console.log("switchhh");
+        albumsDiv.css("display", "none");
+        albummaindiv.css("display", "none");
+        console.log("switch to mainBody");
+    } else {
+        if (albumsDiv.css("display") === "none") {
+            albumsDiv.css("display", "flex");
+            albummaindiv.css("display", "none");
+            console.log("switch to albumsDiv");
+        } else {
+            albumsDiv.css("display", "none");
+            albummaindiv.css("display", "none");
+            console.log("stay on mainBody");
+        }
     }
 });
 
