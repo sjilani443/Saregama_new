@@ -364,6 +364,6 @@ $(document).ready(function () {
     window.location.href = "signin.php";
   });
   $("#logout").click(function () {
-    window.location.href = "signin.php";
+    window.location.href = "logout.php";
   });
 });

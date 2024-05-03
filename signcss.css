@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     font-size: large;
-    background-image: url('https://images.unsplash.com/photo-1511300636408-a63a89df3482?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); 
+   background-color: #040f16;
     background-size: cover;
     background-position: center;
     display: flex;
@@ -12,9 +12,10 @@ body {
     height: 100vh;
 }
 .container {
-    background-color: rgba(255, 255, 255, 0.7); 
+    background-color: #0a2638; 
     padding: 20px;
     border-radius: 10px;
+    color: azure;
 }
 
 .login-box, .signup-box {
