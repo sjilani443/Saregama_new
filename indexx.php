@@ -116,14 +116,14 @@ session_start();
                     </div>
                     <button id="topcharts"><i class="fa-solid fa-chart-simple"></i>Top Charts</button>
 
-                    <button>
+                    <button  id="latesttrending">
                         <i class="fa-solid fa-arrow-up-right-dots"></i>Latest Trending
                     </button>
-                    <button><i class="fa-solid fa-globe"></i>Top Global</button>
-                    <button>
+                    <button id="topglobal"><i class="fa-solid fa-globe"></i>Top Global</button>
+                    <button id="yourplaylists">
                         <i class="fa-solid fa-headphones-simple"></i>Your Playlists
                     </button>
-                    <button>
+                    <button id="trendingpodcasts">
                         <i class="fa-solid fa-podcast"></i>Trending Podcasts
                     </button>
                 </div>
@@ -139,6 +139,28 @@ session_start();
                 <?php
                 include("db.php");
                 $sql = "SELECT * FROM albums2";
+                $res = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($res) > 0) {
+                    while ($row = mysqli_fetch_assoc($res)) {
+
+                        echo "<div class='asong poppins-light'>";
+                        echo "<div id='link'>$row[Song_link]</div>";
+                        echo "<div class='imgg'><img src='$row[Album_Cover]' alt=''></div>";
+                        echo "<div>$row[id]</div>";
+                        echo "<div id='song'>$row[Song]</div>";
+                        echo "<div id='moviename'>$row[Movie_Name]</div>";
+                        echo "<div id='singers'>$row[Singers],$row[Music_Director]</div>";
+                        echo "<div id='hero'>$row[Hero]</div>";
+                        echo "<div>$row[duration]</div>";
+                        echo "</div>";
+                    }
+                }
+                ?>
+            </div>
+            <div class="latesttrending albumsside">
+                <?php
+                include("db.php");
+                $sql = "SELECT * FROM albums3";
                 $res = mysqli_query($conn, $sql);
                 if (mysqli_num_rows($res) > 0) {
                     while ($row = mysqli_fetch_assoc($res)) {

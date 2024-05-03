@@ -33,6 +33,7 @@ $(document).ready(function () {
     if (mainBody.css("display") === "none") {
       mainBody.css("display", "flex");
       albumsDiv.css("display", "none");
+      $(".topchart").css("display","none");
       console.log("switchhh");
     }
   });
@@ -41,6 +42,17 @@ $(document).ready(function () {
     console.log("top charts clicked");
     var mainBody = $(".main-body");
     var albumsDiv = $(".topchart");
+    if (mainBody.css("display") === "flex") {
+      mainBody.css("display", "none");
+      albumsDiv.css("display", "flex");
+      console.log("switchhh");
+    }
+  });
+
+  $("#latesttrending").on("click", function () {
+    console.log("Latest Trending clicked");
+    var mainBody = $(".main-body");
+    var albumsDiv = $(".latesttrending");
     if (mainBody.css("display") === "flex") {
       mainBody.css("display", "none");
       albumsDiv.css("display", "flex");
