@@ -5,6 +5,26 @@ $(document).ready(function () {
   let currentSong = new Audio();
   let play = $(".play");
   let asong;
+  let logid=false;
+
+  // function showOverlay() {
+  //   document.getElementById("overlay").style.display = "block";
+  // }
+  
+  // if ($(".profile").html()=="")
+  // {
+  //   showOverlay();
+  // }
+  // else
+  // {
+  //   document.getElementById("overlay").style.display = "none";
+  // }
+
+  // $("#loggid").on("click", function () {
+  //   document.getElementById("overlay").style.display = "none";
+  //   window.location.href = "signin.php";
+  //   logid=true;
+  // });
 
   $("#home").on("click", function () {
     var mainBody = $(".main-body");
@@ -17,9 +37,8 @@ $(document).ready(function () {
     }
   });
 
-  $("#topcharts").on("click",function()
-{
-  console.log("top charts clicked");
+  $("#topcharts").on("click", function () {
+    console.log("top charts clicked");
     var mainBody = $(".main-body");
     var albumsDiv = $(".topchart");
     if (mainBody.css("display") === "flex") {
@@ -27,7 +46,7 @@ $(document).ready(function () {
       albumsDiv.css("display", "flex");
       console.log("switchhh");
     }
-})
+  });
 
   $(".logo").on("click", function () {
     location.reload();
@@ -41,8 +60,8 @@ $(document).ready(function () {
     $(".main-body").css("padding-bottom", "12vh");
     $(".asong").removeClass("selected");
 
-    $(".usernamemain").css("display","none");
-    $(".enjoy").css("display","none");
+    $(".usernamemain").css("display", "none");
+    $(".enjoy").css("display", "none");
     // Select the currently playing song
     $(".asong").each(function () {
       // Check if the track of the current .asong matches the currently playing track
@@ -328,11 +347,11 @@ $(document).ready(function () {
     popup.style.display = "none";
   });
 
-  $("#logi").click(function(){
+  $("#logi").click(function () {
     console.log("Button Clicked");
     window.location.href = "signin.php";
-});
-$("#logout").click(function(){
-  window.location.href = "signin.php";
-});
+  });
+  $("#logout").click(function () {
+    window.location.href = "signin.php";
+  });
 });
