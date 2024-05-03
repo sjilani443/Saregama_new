@@ -4,83 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign Up</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-      }
-      body {
-        font-size: large;
-        background-color: lavender;
-        display: flex;
-        flex-direction: column;
-      }
-      form {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 20px;
-      }
-      form div {
-        display: flex;
-        flex-direction: column;
-        font-size: larger;
-        gap: 10px;
-      }
-      form div button{
-        font-size: large;
-      }
-      form input{
-        height: 20px;
-      }
-      fieldset {
-        margin: 10% 30% 0 30%;
-        padding: 50px;
-        gap: 20px;
-      }
-      fieldset div{
-        display: flex;
-        justify-content: center;
-      }
-      fieldset h2{
-        text-align: center;
-        margin: 5% 0 5% 0;
-      }
-    </style>
+    <link rel="stylesheet" href="signcss.css">
   </head>
   <body>
-    <fieldset>
-      <h2>Sign Up</h2>
-      <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post" novalidate>
+  <div class="container">
+    <fieldset class="signup-box">
+        <h2>Sign Up</h2>
+        <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post" novalidate>
+            <div>
+                <label for="name">Name </label>
+                <input type="text" id="name" name="name" />
+            </div>
+            <div>
+                <label for="email">Email </label>
+                <input type="email" id="email" name="email" />
+            </div>
+            <div>
+                <label for="password">Password </label>
+                <input type="password" id="password" name="pass" />
+            </div>
+            <div>
+                <label for="password-con">Repeat Password </label>
+                <input type="password" id="password-con" name="passcon" />
+            </div>
+            <div>
+                <button>Sign Up</button>
+            </div>
+        </form>
         <div>
-          <label for="name">Name  </label>
-          <input type="text" id="name" name="name" />
+            Already have an account? <a href="signin.php">Sign In</a>
         </div>
-        <div>
-          <label for="email">Email </label>
-          <input type="email" id="email" name="email" />
-        </div>
-        <div>
-          <label for="password">Password </label>
-          <input type="password" id="password" name="pass" />
-        </div>
-        <div>
-          <label for="password-con">Repeat Password </label>
-          <input type="password" id="password-con" name="passcon" />
-        </div>
-        <div>
-          <button>Sign Up</button>
-        </div>
-      </form>
-      <div>
-        Already have an account? <a href="signin.php">Sign In</a>
-      </div>
     </fieldset>
-  </body>
+</div>
+</body>
 </html>
 
 <?php
+if($_SERVER["REQUEST_METHOD"]=="POST")
+{
 if(empty($_POST["name"])){
   die("Name is required");
 }
@@ -128,5 +89,6 @@ if($user){
     header("Location: indexx.php");
     exit;
   }
+}
 
 ?>

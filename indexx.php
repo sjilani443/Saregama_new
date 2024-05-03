@@ -43,7 +43,7 @@ session_start();
                     <?php if (isset($_SESSION["name"])) : ?>
                         <p><?php echo $_SESSION["name"]; ?></p>
                     <?php else : ?>
-                        <a href="login.php"> <!-- Change "login.php" to your actual login/signup page URL -->
+                        <a href="signin.php"> <!-- Change "login.php" to your actual login/signup page URL -->
                             <i class="fa-solid fa-arrow-right-to-bracket"></i>Login / Signup
                         </a>
                     <?php endif; ?>
@@ -53,6 +53,12 @@ session_start();
         <!-- nav ends here -->
 
         <div class="main">
+            <!-- <div class="overlay" id="overlay">
+                <div class="message-box">
+                    <p>You need to first sign up or sign in to enjoy your music.</p>
+                    <button class="login button" id ="loggid">Do Something</button>
+                </div>
+            </div> -->
             <div class="premium poppins-light">
                 <div class="popup-container" id="popup">
                     <div class="popup">
@@ -123,7 +129,6 @@ session_start();
                 </div>
 
                 <div class="logout">
-                    <button><i class="fa-solid fa-gear"></i>Settings</button>
                     <button id="logout">
                         <i class="fa-solid fa-right-from-bracket"></i>Logout
                     </button>
