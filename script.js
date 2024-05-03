@@ -28,37 +28,57 @@ $(document).ready(function () {
 
   $("#home").on("click", function () {
     var mainBody = $(".main-body");
-    var albumsDiv = $(".albumsm");
+    var albumsDiv = $(".albumsside");
 
-    if (mainBody.css("display") === "none") {
-      mainBody.css("display", "flex");
-      albumsDiv.css("display", "none");
-      $(".topchart").css("display","none");
-      console.log("switchhh");
+    if (mainBody.css("display") === "none" || albumsDiv.css("display") !== "none") {
+        mainBody.css("display", "flex");
+        $(".albumsside").css("display", "none");
+        console.log("switchhh");
     }
-  });
+});
+
 
   $("#topcharts").on("click", function () {
-    console.log("top charts clicked");
-    var mainBody = $(".main-body");
-    var albumsDiv = $(".topchart");
-    if (mainBody.css("display") === "flex") {
-      mainBody.css("display", "none");
-      albumsDiv.css("display", "flex");
-      console.log("switchhh");
-    }
-  });
+    console.log("Top Charts clicked");
+    toggleAlbumDisplay(".topchart");
+});
 
-  $("#latesttrending").on("click", function () {
+$("#latesttrending").on("click", function () {
     console.log("Latest Trending clicked");
+    toggleAlbumDisplay(".latesttrending");
+});
+
+$("#topglobal").on("click", function () {
+    console.log("Top Global clicked");
+    toggleAlbumDisplay(".topglobal");
+});
+
+$("#yourplaylists").on("click", function () {
+    console.log("Your Playlists clicked");
+    toggleAlbumDisplay(".yourplaylists");
+});
+
+$("#trendingpodcasts").on("click", function () {
+  console.log("Your Playlists clicked");
+  toggleAlbumDisplay(".yourplaylists");
+});
+
+function toggleAlbumDisplay(albumClass) {
     var mainBody = $(".main-body");
-    var albumsDiv = $(".latesttrending");
+    var albumsDiv = $(albumClass);
     if (mainBody.css("display") === "flex") {
-      mainBody.css("display", "none");
-      albumsDiv.css("display", "flex");
-      console.log("switchhh");
+        $(".albumsside").not(albumsDiv).css("display", "none");
+        mainBody.css("display", "none");
+        albumsDiv.css("display", "flex");
+        console.log("switchhh");
     }
-  });
+    else
+    {
+      $(".albumsside").css("display","none");
+      albumsDiv.css("display","flex");
+    }
+}
+
 
   $(".logo").on("click", function () {
     location.reload();

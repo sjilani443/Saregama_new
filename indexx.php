@@ -100,10 +100,10 @@ session_start();
             <div class="sidebar">
                 <div class="options">
                     <button id="home"><i class="fa-solid fa-house"></i>Home</button>
-                    <button>
+                    <button id="myprofile">
                         <i class="fa-solid fa-user"></i>
                         My Profile
-                    </button>
+                    </button >
                     <div class="profile montserrat">
                         <?php
                         if (isset($_SESSION["name"])) : ?>
@@ -138,7 +138,7 @@ session_start();
             <div class="topchart albumsside">
                 <?php
                 include("db.php");
-                $sql = "SELECT * FROM albums2";
+                $sql = "SELECT * FROM albums1";
                 $res = mysqli_query($conn, $sql);
                 if (mysqli_num_rows($res) > 0) {
                     while ($row = mysqli_fetch_assoc($res)) {
@@ -160,11 +160,10 @@ session_start();
             <div class="latesttrending albumsside">
                 <?php
                 include("db.php");
-                $sql = "SELECT * FROM albums3";
+                $sql = "SELECT * FROM albums5";
                 $res = mysqli_query($conn, $sql);
                 if (mysqli_num_rows($res) > 0) {
                     while ($row = mysqli_fetch_assoc($res)) {
-
                         echo "<div class='asong poppins-light'>";
                         echo "<div id='link'>$row[Song_link]</div>";
                         echo "<div class='imgg'><img src='$row[Album_Cover]' alt=''></div>";
@@ -178,6 +177,70 @@ session_start();
                     }
                 }
                 ?>
+            </div>
+
+            <div class="topglobal albumsside">
+                <?php
+                include("db.php");
+                $sql = "SELECT * FROM albums11";
+                $res = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($res) > 0) {
+                    while ($row = mysqli_fetch_assoc($res)) {
+                        echo "<div class='asong poppins-light'>";
+                        echo "<div id='link'>$row[Song_link]</div>";
+                        echo "<div class='imgg'><img src='$row[Album_Cover]' alt=''></div>";
+                        echo "<div>$row[id]</div>";
+                        echo "<div id='song'>$row[Song]</div>";
+                        echo "<div id='moviename'>$row[Movie_Name]</div>";
+                        echo "<div id='singers'>$row[Singers],$row[Music_Director]</div>";
+                        echo "<div id='hero'>$row[Hero]</div>";
+                        echo "<div>$row[duration]</div>";
+                        echo "</div>";
+                    }
+                }
+                ?>
+            </div>
+            <div class="yourplaylists albumsside">
+                <?php
+                include("db.php");
+                $sql = "SELECT * FROM albums13";
+                $res = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($res) > 0) {
+                    while ($row = mysqli_fetch_assoc($res)) {
+                        echo "<div class='asong poppins-light'>";
+                        echo "<div id='link'>$row[Song_link]</div>";
+                        echo "<div class='imgg'><img src='$row[Album_Cover]' alt=''></div>";
+                        echo "<div>$row[id]</div>";
+                        echo "<div id='song'>$row[Song]</div>";
+                        echo "<div id='moviename'>$row[Movie_Name]</div>";
+                        echo "<div id='singers'>$row[Singers],$row[Music_Director]</div>";
+                        echo "<div id='hero'>$row[Hero]</div>";
+                        echo "<div>$row[duration]</div>";
+                        echo "</div>";
+                    }
+                }
+                ?>
+                <div class="trendingpodcasts albumsside">
+                <?php
+                include("db.php");
+                $sql = "SELECT * FROM albums3";
+                $res = mysqli_query($conn, $sql);
+                if (mysqli_num_rows($res) > 0) {
+                    while ($row = mysqli_fetch_assoc($res)) {
+                        echo "<div class='asong poppins-light'>";
+                        echo "<div id='link'>$row[Song_link]</div>";
+                        echo "<div class='imgg'><img src='$row[Album_Cover]' alt=''></div>";
+                        echo "<div>$row[id]</div>";
+                        echo "<div id='song'>$row[Song]</div>";
+                        echo "<div id='moviename'>$row[Movie_Name]</div>";
+                        echo "<div id='singers'>$row[Singers],$row[Music_Director]</div>";
+                        echo "<div id='hero'>$row[Hero]</div>";
+                        echo "<div>$row[duration]</div>";
+                        echo "</div>";
+                    }
+                }
+                ?>
+            </div>
             </div>
 
             <div class="main-body">
