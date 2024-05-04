@@ -101,6 +101,15 @@ body
   color: black;
   z-index: 1;
 }
+
+.blur {
+  backdrop-filter: blur(5px); 
+  filter: blur(5px); 
+}
+.noblur {
+  backdrop-filter: none; 
+  filter: none; 
+}
 .searchdiv
 {
   height: 60vh;
