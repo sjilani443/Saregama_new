@@ -23,9 +23,7 @@ session_start();
 </head>
 
 <body>
-
     <script src="script.js"></script>
-
     <div class="body">
         <div class="nav poppins-light">
             <div class="logo">
@@ -43,22 +41,16 @@ session_start();
                     <?php if (isset($_SESSION["name"])) : ?>
                         <p><?php echo $_SESSION["name"]; ?></p>
                     <?php else : ?>
-                        <a href="signin.php"> <!-- Change "login.php" to your actual login/signup page URL -->
+                        <a href="signin.php">
                             <i class="fa-solid fa-arrow-right-to-bracket"></i>Login / Signup
                         </a>
                     <?php endif; ?>
                 </button>
             </div>
         </div>
-        <!-- nav ends here -->
-
+       
         <div class="main">
-            <!-- <div class="overlay" id="overlay">
-                <div class="message-box">
-                    <p>You need to first sign up or sign in to enjoy your music.</p>
-                    <button class="login button" id ="loggid">Do Something</button>
-                </div>
-            </div> -->
+            
             <div class="premium poppins-light">
                 <div class="popup-container" id="popup">
                     <div class="popup">
@@ -142,7 +134,6 @@ session_start();
                 $res = mysqli_query($conn, $sql);
                 if (mysqli_num_rows($res) > 0) {
                     while ($row = mysqli_fetch_assoc($res)) {
-
                         echo "<div class='asong poppins-light'>";
                         echo "<div id='link'>$row[Song_link]</div>";
                         echo "<div class='imgg'><img src='$row[Album_Cover]' alt=''></div>";
@@ -223,7 +214,7 @@ session_start();
                 <div class="trendingpodcasts albumsside">
                 <?php
                 include("db.php");
-                $sql = "SELECT * FROM albums3";
+                $sql = "SELECT * FROM albums4";
                 $res = mysqli_query($conn, $sql);
                 if (mysqli_num_rows($res) > 0) {
                     while ($row = mysqli_fetch_assoc($res)) {

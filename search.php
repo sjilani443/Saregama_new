@@ -1,7 +1,7 @@
 <?php
 include("db.php");
 $j = 1;
-for ($i = 1; $i <= 13; $i++) {
+for ($i = 1; $i <= 21; $i++) {
     $tableName = "albums".$i; // Corrected variable name
     $sql = "SELECT * FROM $tableName";
     $res = mysqli_query($conn, $sql);

@@ -12,7 +12,4 @@ try {
     echo "Failed to connect to MySQL: " . $e->getMessage();
 }
 
-// if ($conn) {
-//     echo "You are connected";
-// }
 ?>

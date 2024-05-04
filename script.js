@@ -36,17 +36,21 @@ $(document).ready(function () {
         albumsDiv.css("display", "none");
         albummaindiv.css("display", "none");
         console.log("switch to mainBody");
-    } else {
-        if (albumsDiv.css("display") === "none") {
+    } else if (albumsDiv.css("display") === "none") {
             albumsDiv.css("display", "flex");
             albummaindiv.css("display", "none");
             console.log("switch to albumsDiv");
-        } else {
+        } 
+        else if (mainBody.css("display") === "flex"){
+          mainBody.css("display", "flex");
+          albumsDiv.css("display", "none");
+          albummaindiv.css("display", "none");
+        }
+        else {
             albumsDiv.css("display", "none");
             albummaindiv.css("display", "none");
             console.log("stay on mainBody");
         }
-    }
 });
 
 

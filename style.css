@@ -47,24 +47,12 @@ body
 {
   overflow: hidden;
 }
-.topchart
-{
-    width: 90vh;
-    height: 90vh;
-    color: white;
-    border-radius: 8px;
-    display: none;
-    flex-direction: column;
-    background-color: #dfe8ec31;
-    overflow:scroll;
-}
 .albumsside
 {
-  width: 80%;
+    width: 80%;
     height: 93%;
     color: white;
     border-radius: 8px;
-    position: relative;
     display: none;
     flex-direction: column;
     background-color: #55c2f131;
@@ -221,7 +209,7 @@ button:hover {
 .sidebar {
   padding: 15px;
   width: 17%;
-  height: 90vh;
+  height: 87vh;
   /* background-color:#040F16; */
   background-color: rgba(42, 42, 43, 0.481);
   color: #dfdedadd;
