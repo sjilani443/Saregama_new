@@ -27,5 +27,3 @@ A dynamic and responsive web-based music player designed for streaming and explo
 | **Web Design**    | Responsive Design                               |
 | **Tools**         | Git, GitHub                                     |
 
-## 📁 Folder Structure
-
